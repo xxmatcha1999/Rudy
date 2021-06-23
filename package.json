@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "homepage": "https://xxmatcha1999.github.io/Rudy/",
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
+    "deploy": "node ./node_modules/vue-gh-pages/index.js"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.1",
@@ -15,6 +16,7 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
+    "vue-gh-pages": "^1.19.1",
     "vue-neon-light": "^1.0.5"
   },
   "devDependencies": {
