@@ -2,8 +2,7 @@
   <div class="">    
     <div class="container">
       <div>
-        <p @click="plus()"><img class="icon_cart" src="~/assets/cart.png" /><sub  v-if="cart > 0"  class="sub_text_icon">{{ cart }}</sub></p>
-        
+        <img class="icon_cart" src="~/assets/cart.png" /><sub  v-if="cart > 0" class="sub_text_icon">{{ cart }}</sub>
         <div>
           <b-row class="start" cols="5">
             <b-col>
@@ -11,7 +10,7 @@
                 <button class="btn-1 bg" @click="go()" href="Me">
                   <img class="img_a" src="~/assets/item_7.png" />
                   <h4 class="head_text">Space Ship LV.1</h4>
-                  <p class="dis_text">
+                  <p class="dis_text"> 
                     🔥🔥พร้อมส่ง🔥🔥<br />ยานอวกาศสุดเฟี้ยว
                   </p>
                   <span></span>
@@ -72,11 +71,9 @@
   </div>
 </template>
 <script>
-export const myVar = 'This is my variable'
-export const settings = {
-  some: 'Settings'
-}
+
 export default {
+  layout:'nav_shop',
   data() {
     return {
       cart: 0,
@@ -95,7 +92,7 @@ export default {
       localStorage.setItem("cart",JSON.parse(this.cart))
     },
     go(){
-      window.location = "Me";
+      window.location = "SpaceShip_lv1";
     },
   },
 };
