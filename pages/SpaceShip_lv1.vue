@@ -1,89 +1,56 @@
 <template>
-  <div class="">    
+  <div class="">
     <div class="container">
-      <div>
-        <p @click="plus()"><img class="icon_cart" src="~/assets/cart.png" /><sub  v-if="cart > 0"  class="sub_text_icon">{{ cart }}</sub></p>
-        
-        <div>
-          <b-row class="start" cols="5">
-            <b-col>
-              <div class="">
-                <button class="btn-1 bg" @click="go()" href="Me">
-                  <img class="img_a" src="~/assets/item_7.png" />
-                  <h4 class="head_text">Space Ship LV.1</h4>
-                  <p class="dis_text">
-                    🔥🔥พร้อมส่ง🔥🔥<br />ยานอวกาศสุดเฟี้ยว
-                  </p>
-                  <span></span>
-                  <p class="sub_text">20฿</p>
-                </button>
-              </div>
+      <b-container>
+        <b-row >
+          <b-col cols="8"
+            ><div>
+              <p>
+                <img class="icon_cart" src="~/assets/cart.png" /><sub
+                  v-if="cart > 0"
+                  class="sub_text_icon"
+                  >{{ cart }}</sub
+                >
+              </p>
+            </div>
+          </b-col>
+
+          <b-col>
+            <div>
+              <img class="img_a" src="~/assets/item_7.png" />
+            </div>
+          </b-col>
+          <b-col>
+            <div class="information">
+              <h1>Space Ship Level 1</h1>
+              <p>🔥🔥พร้อมส่ง🔥🔥<br />ยานอวกาศสุดเฟี้ยว</p>
+              <p>
+                <button @click="delcart()">-</button>{{ num
+                }}<button @click="addcart()">+</button>
+              </p>
+              <br><br>
+              <button @click="plus()">ใส่ตะกร้า</button>
+            </div>
             </b-col>
-            <b-col>
-              <div class="">
-                <button class="btn-1 bg">
-                  <img class="img_a" src="~/assets/item_8.png" />
-                  <h4>Space Gun LV.1</h4>
-                  <p class="dis_text">
-                    🔥🔥พร้อมส่ง🔥🔥<br />ยานอวกาศสุดเฟี้ยว
-                  </p>
-                  <span></span>
-                  <p class="sub_text">20฿</p>
-                </button>
-              </div>
-            </b-col>
-            <b-col>
-              <div class="">
-                <button class="btn-1 bg">
-                  <img class="img_a" src="~/assets/item_13.png" />
-                  <h4>Space Gun LV.1</h4>
-                  <p class="dis_text">
-                    🔥🔥พร้อมส่ง🔥🔥<br />ยานอวกาศสุดเฟี้ยว
-                  </p>
-                  <span></span>
-                  <p class="sub_text">20฿</p>
-                </button>
-              </div>
-            </b-col>
-            <b-col>
-              <div class="">
-                <button class="btn-1 bg">
-                  <img class="img_a" src="~/assets/item_15.png" />
-                  <h4>Space Gun LV.1</h4>
-                  <span></span>
-                  <p class="sub_text">20฿</p>
-                </button>
-              </div>
-            </b-col>
-            <b-col>
-              <div class="">
-                <button class="btn-1 bg">
-                  <img class="img_a" src="~/assets/item_14.webp" />
-                  <h4>Space Gun LV.1</h4>
-                  <span></span>
-                  <p class="sub_text">20฿</p>
-                </button>
-              </div>
-            </b-col>
-          </b-row>
-        </div>
-      </div>
+        </b-row>
+      </b-container>
     </div>
   </div>
 </template>
 <script>
-export const myVar = 'This is my variable'
+export const myVar = "This is my variable";
 export const settings = {
-  some: 'Settings'
-}
+  some: "Settings",
+};
 export default {
   data() {
     return {
       cart: 0,
-      a:0
+      a: 0,
+      num: 0,
     };
   },
-    mounted() {
+  mounted() {
     if (localStorage.cart) {
       this.a = localStorage.getItem("cart");
       this.cart = parseInt(this.a);
@@ -91,17 +58,23 @@ export default {
   },
   methods: {
     plus() {
-      this.cart = this.cart  + 1 ;
-      localStorage.setItem("cart",JSON.parse(this.cart))
+      this.cart = this.cart + this.num;
+      localStorage.setItem("cart", JSON.parse(this.cart));
     },
-    go(){
+    go() {
       window.location = "Me";
+    },
+    addcart() {
+      this.num = this.num + 1;
+    },
+    delcart() {
+      this.num = this.num - 1;
     },
   },
 };
 </script>
 <style>
-.sub_text_icon{
+.sub_text_icon {
   font-size: 30px;
 }
 .container {
@@ -112,10 +85,21 @@ export default {
   align-items: center;
   text-align: center;
 }
+.information {
+  text-align: left;
+  font-size: 26px;
+  color: red;
+  background-color: #fff;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-radius: 5%;
+}
 .icon_cart {
   width: 50px;
   height: 50px;
-  align-items: right ;
+  align-items: right;
   text-align: right;
 }
 .bg:hover {
@@ -167,8 +151,9 @@ export default {
   padding-bottom: 15px;
 }
 .img_a {
-  width: 200px;
-  height: 200px;
+  width: 500px;
+  height: 500px;
+  text-align: left;
 }
 .links {
   padding-top: 15px;
