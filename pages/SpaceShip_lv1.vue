@@ -25,11 +25,12 @@
               <h1>Space Ship Level 1</h1>
               <p>🔥🔥พร้อมส่ง🔥🔥<br />ยานอวกาศสุดเฟี้ยว</p>
               <p>
-                <button @click="delcart()">-</button>{{ num
-                }}<button @click="addcart()">+</button>
+                <button  @click="delcart()" class="btn btn-primary tab" >-</button>
+                {{ num }}
+                <button @click="addcart()" class="btn btn-primary">+</button>
               </p>
               <br><br>
-              <button @click="plus()">ใส่ตะกร้า</button>
+              <button @click="plus()"  class="btn btn-primary">ใส่ตะกร้า</button>
             </div>
             </b-col>
         </b-row>
@@ -38,11 +39,9 @@
   </div>
 </template>
 <script>
-export const myVar = "This is my variable";
-export const settings = {
-  some: "Settings",
-};
+
 export default {
+  layout:'nav_shop',
   data() {
     return {
       cart: 0,
@@ -60,6 +59,7 @@ export default {
     plus() {
       this.cart = this.cart + this.num;
       localStorage.setItem("cart", JSON.parse(this.cart));
+      alert("เพิ่มลงตะกร้าเรียบร้อย");
     },
     go() {
       window.location = "Me";
@@ -74,6 +74,10 @@ export default {
 };
 </script>
 <style>
+.tab { 
+       display:inline-block; 
+       margin-left: 40px; 
+}
 .sub_text_icon {
   font-size: 30px;
 }
@@ -89,7 +93,8 @@ export default {
   text-align: left;
   font-size: 26px;
   color: red;
-  background-color: #fff;
+  background: none;
+  background-color: rgba(255, 255, 255, 0.123);
   padding-left: 3%;
   padding-right: 3%;
   padding-top: 2%;
@@ -167,79 +172,4 @@ body {
   background-size: 100% 100%;
 }
 
-/*-------btn1--------*/
-button {
-  display: inline-block;
-  position: relative;
-  background: none;
-  border: none;
-  color: rgb(255, 255, 255);
-  font-size: 18px;
-  cursor: pointer;
-  margin: 20px 30px;
-  background: rgba(0, 0, 0, 0.09);
-}
-span {
-  display: block;
-  padding: 25px 80px;
-}
-button::before,
-button::after {
-  content: "";
-  width: 0;
-  height: 2px;
-  position: absolute;
-  transition: all 0.2s linear;
-  background: rgb(255, 255, 255);
-}
-
-span::before,
-span::after {
-  content: "";
-  width: 2px;
-  height: 0;
-  position: absolute;
-  transition: all 0.2s linear;
-  background: rgb(255, 255, 255);
-}
-button:hover::before,
-button:hover::after {
-  width: 100%;
-}
-button:hover span::before,
-button:hover span::after {
-  height: 100%;
-}
-.btn-1::before,
-.btn-1::after {
-  transition-delay: 0.2s;
-}
-.btn-1 span::before,
-.btn-1 span::after {
-  transition-delay: 0s;
-}
-.btn-1::before {
-  right: 0;
-  top: 0;
-}
-.btn-1::after {
-  left: 0;
-  bottom: 0;
-}
-.btn-1 span::before {
-  left: 0;
-  top: 0;
-}
-.btn-1 span::after {
-  right: 0;
-  bottom: 0;
-}
-.btn-1:hover::before,
-.btn-1:hover::after {
-  transition-delay: 0s;
-}
-.btn-1:hover span::before,
-.btn-1:hover span::after {
-  transition-delay: 0.2s;
-}
 </style>
